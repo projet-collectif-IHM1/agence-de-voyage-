@@ -21,6 +21,11 @@
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
     "@tailwindcss/postcss": "^4.0.3",
+    "flowbite": "^3.1.2",
+    "ngx-owl-carousel-o": "^16.0.0",
+    "ngx-scrollbar": "^10.0.0",
+    "primeicons": "^7.0.0",
+    "primeng": "^16.9.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

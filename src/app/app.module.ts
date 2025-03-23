@@ -14,12 +14,28 @@ import { HeaderComponent } from './shared/header/header.component';
 import {MatIconModule} from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { HomeComponent } from './home/home.component';
+import { DestinationComponent } from './destination/destination.component';
+import { ContactComponent } from './contact/contact.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { HotelComponent } from './hotel/hotel.component';
+import { HttpClientModule } from '@angular/common/http';
+import { KnobModule } from 'primeng/knob';
+import { CarouselModule } from 'primeng/carousel';  // Import du module Carousel
+import { ButtonModule } from 'primeng/button';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 @NgModule({
   declarations: [
     AppComponent,
  
     HeaderComponent,
-      HomeComponent
+      HomeComponent,
+      DestinationComponent,
+      ContactComponent,
+      FooterComponent,
+      HotelComponent,
+      
+      
   ],
   imports: [
     BrowserModule,
@@ -31,7 +47,17 @@ import { HomeComponent } from './home/home.component';
     MatSlideToggleModule,
     MatButtonToggleModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule ,
+    CarouselModule,
+    CarouselModule,
+    BrowserAnimationsModule,
+    ButtonModule,
+    KnobModule,
+    InputSwitchModule,
+    NgScrollbarModule,
+  
+
  
 
   ],

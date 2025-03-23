@@ -1,0 +1,57 @@
+
+  <div class="relative w-full pl-96 pr-32 pb-20">
+    <!-- Bouton gauche -->
+    <button (click)="scrollLeft()" class="absolute left-11 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2  shadow-md z-10">
+      ◀
+    </button>
+ 
+  <!-- Conteneur du scroll -->
+  <div #scrollContainer class="overflow-x-auto whitespace-nowrap flex space-x-6 scroll-smooth px-2">
+    <div *ngFor="let hotel of hotels" class="relative min-w-[320px] h-90 bg-white   overflow-hidden">
+      
+        <div class="relative w-96 shadow-lg rounded-lg overflow-hidden">
+            <!-- Image de l'hôtel -->
+            <div class="relative">
+              <img *ngIf="hotel.imageHotel?.length" [src]="hotel.imageHotel[0]" alt="Image de l'hôtel"
+                   class="w-full h-72 object-cover">
+              
+              <!-- Prix en haut à gauche -->
+              <div class="absolute top-3 left-3 bg-orange-500 text-white px-3 py-1 rounded-md text-sm font-bold shadow-md">
+                $200/person
+              </div>
+          
+              <!-- Contenu sur l'image -->
+              <div class="absolute bottom-0 w-full bg-gradient-to-t from-black/60 to-transparent p-4">
+                <!-- Étoiles -->
+                <div class="text-yellow-400 text-lg mb-1">★★★★★</div>
+          
+                <!-- Nom de l'hôtel -->
+                <p class="text-white text-xl font-semibold">{{ hotel.nomHotel }}</p>
+          
+                <!-- Localisation -->
+                <p class="text-gray-300 text-sm flex items-center">
+                  📍 {{ hotel.adresse }}
+                </p>
+              </div>
+            </div>
+          
+            <!-- Informations complémentaires -->
+            <div class="bg-white p-4">
+              <!-- Icônes et détails -->
+              <div class="flex items-center gap-4 text-gray-600 text-sm mt-3">
+                <span>🛁 2</span>
+                <span>🛏 3</span>
+                <span>🏖️ Near Beach</span>
+              </div>
+            </div>
+          </div>
+          
+  
+    <!-- Bouton droit -->
+    <button (click)="scrollRight()" 
+    class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white p-3 rounded-full shadow-lg hover:bg-gray-700 transition duration-300">
+▶
+</button>
+  </div>
+ 
+  
