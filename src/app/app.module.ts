@@ -24,6 +24,14 @@ import { CarouselModule } from 'primeng/carousel';  // Import du module Carousel
 import { ButtonModule } from 'primeng/button';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { NgScrollbarModule } from 'ngx-scrollbar';
+import { CarsoulComponent } from './carsoul/carsoul.component';
+import { HotelCardComponent } from './hotel-card/hotel-card.component';
+import { BackgroundCarouselComponent } from './background-carousel/background-carousel.component';
+
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { SatisticComponent } from './satistic/satistic.component';
+import { AvisComponent } from './avis/avis.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +42,11 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
       ContactComponent,
       FooterComponent,
       HotelComponent,
+      CarsoulComponent,
+      HotelCardComponent,
+      BackgroundCarouselComponent,
+      SatisticComponent,
+      AvisComponent,
       
       
   ],
@@ -56,7 +69,8 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     KnobModule,
     InputSwitchModule,
     NgScrollbarModule,
-  
+    CommonModule,
+    FormsModule
 
  
 

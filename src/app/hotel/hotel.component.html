@@ -1,57 +1,175 @@
+<app-background-carousel></app-background-carousel>
 
-  <div class="relative w-full pl-96 pr-32 pb-20">
-    <!-- Bouton gauche -->
-    <button (click)="scrollLeft()" class="absolute left-11 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2  shadow-md z-10">
-      ◀
-    </button>
- 
-  <!-- Conteneur du scroll -->
-  <div #scrollContainer class="overflow-x-auto whitespace-nowrap flex space-x-6 scroll-smooth px-2">
-    <div *ngFor="let hotel of hotels" class="relative min-w-[320px] h-90 bg-white   overflow-hidden">
+
+
+<div class="bg-slate-100">
+  <!-- bradcoumb -->
+
+  <nav class="flex px-20 py-10 pt-14" aria-label="Breadcrumb">
+    <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+      <li class="inline-flex items-center">
+        <a href="/Home" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-cyan-700 dark:text-gray-400 dark:hover:text-white">
+          <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
+          </svg>
+          Home
+        </a>
+      </li>
       
-        <div class="relative w-96 shadow-lg rounded-lg overflow-hidden">
-            <!-- Image de l'hôtel -->
-            <div class="relative">
-              <img *ngIf="hotel.imageHotel?.length" [src]="hotel.imageHotel[0]" alt="Image de l'hôtel"
-                   class="w-full h-72 object-cover">
-              
-              <!-- Prix en haut à gauche -->
-              <div class="absolute top-3 left-3 bg-orange-500 text-white px-3 py-1 rounded-md text-sm font-bold shadow-md">
-                $200/person
-              </div>
+      <li aria-current="page">
+        <div class="flex items-center">
+          <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+          </svg>
+          <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">Hotel</span>
+        </div>
+      </li>
+    </ol>
+  </nav>
+<div class="w-full px-16">
+<div class="flex min-h-screen  p-5">
+
+
+
+
+
+
+
+
+  
+  <!-- Barre latérale des filtres -->
+  <aside class="w-72 p-5  divide-y  h-min divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700">
+   
+  
+    <!-- Accordéon : Position -->
+    <div>
+      <button (click)="toggleAccordion('position')" class="flex items-center justify-between w-full p-2 font-medium text-base text-gray-600 border-b">
+        Country
+        <svg class="w-4 h-4 transform" [ngClass]="{'rotate-180': accordions.position}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l4 4 4-4" />
+        </svg>
+      </button>
+      <div *ngIf="accordions.position" class="p-2">
+        <div *ngFor="let paye of payes" class="relative min-w-[320px] h-10 bg-white   overflow-hidden ">
           
-              <!-- Contenu sur l'image -->
-              <div class="absolute bottom-0 w-full bg-gradient-to-t from-black/60 to-transparent p-4">
-                <!-- Étoiles -->
-                <div class="text-yellow-400 text-lg mb-1">★★★★★</div>
-          
-                <!-- Nom de l'hôtel -->
-                <p class="text-white text-xl font-semibold">{{ hotel.nomHotel }}</p>
-          
-                <!-- Localisation -->
-                <p class="text-gray-300 text-sm flex items-center">
-                  📍 {{ hotel.adresse }}
-                </p>
-              </div>
-            </div>
-          
-            <!-- Informations complémentaires -->
-            <div class="bg-white p-4">
-              <!-- Icônes et détails -->
-              <div class="flex items-center gap-4 text-gray-600 text-sm mt-3">
-                <span>🛁 2</span>
-                <span>🛏 3</span>
-                <span>🏖️ Near Beach</span>
-              </div>
+         
+
+    
+            <!-- Prix en haut à gauche -->
+            <div class="absolute   text-neutral-700  text-sm font-medium">
+              {{paye.nompaye}}
             </div>
           </div>
+    
+      </div>
+    </div>
+  
+    <!-- Accordéon : Catégorie -->
+    <div>
+      <button (click)="toggleAccordion('price')" class="flex items-center justify-between w-full p-2 font-medium text-gray-700 border-b">
+        Price
+        <svg class="w-4 h-4 transform" [ngClass]="{'rotate-180': accordions.price}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l4 4 4-4" />
+        </svg>
+      </button>
+      <div *ngIf="accordions.price" class="p-2">
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" (change)="toggleAllPrices($event)" [checked]="allSelected" class="form-checkbox text-blue-600" />
+          <span>Any Price</span>
+        </label>
+        <label *ngFor="let range of priceRanges" class="flex items-center space-x-2">
+          <input type="checkbox" [checked]="selectedPrices.has(range)" (change)="togglePriceSelection(range)" class="form-checkbox text-blue-600" />
+          <span>{{ range }}</span>
+        </label>
+      </div>
+    </div>
+    
+    <div>
+      <button (click)="toggleAccordion('rating')" class="flex items-center justify-between w-full p-2 font-medium text-gray-700 border-b">
+        Rating
+        <svg class="w-4 h-4 transform" [ngClass]="{'rotate-180': accordions.rating}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l4 4 4-4" />
+        </svg>
+      </button>
+      <div *ngIf="accordions.rating" class="p-2">
+        <select class="w-full p-2 border rounded" [(ngModel)]="selectedRating">
+          <option *ngFor="let rating of ratings">{{ rating }}</option>
+        </select>
+      </div>
+    </div>
+    
+    
+  
+    <!-- Accordéon : Price -->
+    <div>
+      <button (click)="toggleAccordion('price')" class="flex items-center justify-between w-full p-2 font-medium text-gray-700 border-b">
+        Price
+        <svg class="w-4 h-4 transform" [ngClass]="{'rotate-180': accordions.price}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l4 4 4-4" />
+        </svg>
+      </button>
+      <div *ngIf="accordions.price" class="p-2">
+        <label class="block font-medium">Sélectionnez :</label>
+        <select class="w-full p-2 border rounded">
+          <option>3 étoiles</option>
+          <option>4 étoiles</option>
+          <option>5 étoiles</option>
+        </select>
+      </div>
+    </div>
+  
+    <button class="w-full bg-blue-600 text-white p-2 rounded mt-4">Appliquer</button>
+  </aside>
+  
+
+  <!-- Section des hôtels -->
+  <main class="w-3/4 pl-9">
+  
+    <div class="grid grid-cols-3 gap-4">
+      <!-- Exemple de carte d'hôtel -->
+      <div *ngFor="let hotel of hotels" >
+        <div class="relative w-[300px] overflow-hidden">
+            <!-- Image de l'hôtel avec ombre interne -->
+            
+            <div class="relative w-[300px] rounded-lg overflow-hidden shadow-lg">
+                <!-- Image de l'hôtel -->
+                <img [src]="hotel.imageHotel[0]" alt="Image de l'hôtel" class="w-full h-[280px] object-cover">
+                
+                <!-- Contenu principal -->
+                <div class="absolute top-0 left-0 w-full h-[280px] bg-gradient-to-t to-cyan-600 via-black/20 from-transparent p-2">
+                  <h3 class="text-white text-lg font-semibold">{{ hotel.nomHotel }}</h3>
+                  <p class="text-white text-sm flex items-center">
+                    {{ hotel.adresse }} 
+                    
+                  </p>
+                </div>
+                
+                <!-- Prix et bouton -->
+            <div class="absolute bottom-2 right-2 bg-white rounded-lg shadow-md text-center flex p-2">
+                <p class="text-[10px] text-gray-500 -rotate-90 writing-mode-vertical-rl">à partir de</p>
+                <div class="ml-2">
+                  <p class="text-base font-bold text-cyan-700">{{ hotel.offre[0].prixParNuit }} DT</p>
+                  <p class="text-[10px] text-gray-500">en petit déjeuner</p>
+                </div>
+              </div>
+              
+              </div>
+              
+          </div>
           
-  
-    <!-- Bouton droit -->
-    <button (click)="scrollRight()" 
-    class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white p-3 rounded-full shadow-lg hover:bg-gray-700 transition duration-300">
-▶
-</button>
-  </div>
- 
-  
+          
+    </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex justify-center mt-6">
+      <button class="px-3 py-2 bg-gray-300 rounded-l">Précédent</button>
+      <button class="px-3 py-2 bg-blue-600 text-white">1</button>
+      <button class="px-3 py-2 bg-gray-300">2</button>
+      <button class="px-3 py-2 bg-gray-300">3</button>
+      <button class="px-3 py-2 bg-gray-300 rounded-r">Suivant</button>
+    </div>
+  </main>
+</div>
+</div>
+</div>
